@@ -494,7 +494,7 @@ where
         T: 'static + Debug,
     {
         if input_map.wants_clear {
-            input.update();
+            input.clear();
             let mut v = vec![];
             for i in input.get_pressed().cloned() {
                 v.push(i);
@@ -522,7 +522,7 @@ where
     T: Hash + Eq + Clone + Send + Sync + Debug,
     'a: 'static,
 {
-    fn build(&self, app: &mut AppBuilder) {
+    fn build(&self, app: &mut App) {
         const UPDATE_STATES_LABEL: &str = "UPDATE_STAES";
         const RESOLVE_CONFLICTS_LABEL: &str = "RESOLVE_CONFLICTS";
         app.init_resource::<InputMap<T>>()
